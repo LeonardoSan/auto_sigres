@@ -8,13 +8,6 @@ using System;
 
 namespace api_consulta_sigres_som.Controllers
 {
-
-    public class oSOM
-    {
-        public string Codigo { get; set; }
-        public string Estado { get; set; }
-    }
-
     [RoutePrefix("api/som")]
     public class SOMController : ApiController
     {
@@ -32,11 +25,6 @@ namespace api_consulta_sigres_som.Controllers
             else if (entorno == "2")
                 cadena = "PROD";
             else cadena = "DEV";
-        }
-
-        public string index()
-        {
-            return "Bienvenido a la Api de SOM";
         }
 
         [HttpGet]
@@ -63,149 +51,154 @@ namespace api_consulta_sigres_som.Controllers
             string db_som = EncryptionManager.Decrypt(ConfigurationManager.ConnectionStrings["DB_CONNECTION_SOM_" + cadena].ToString());
             DataTable query = new DataTable();
 
-            //using (OracleConnection conn = new OracleConnection(db_som))
-            //{
-            //    try
-            //    {
-            //        OracleCommand cmd = new OracleCommand();
-
-            //        cmd.CommandText = consultaSOM;
-            //        cmd.Connection = conn;
-            //        conn.Open();
-            //        OracleDataReader queryOracle = cmd.ExecuteReader();
-
-            //        query.Load(queryOracle);
-            //        conn.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            query = new DataTable();
-            DataColumn column = new DataColumn();
-            column.ColumnName = "FLOWID";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "TECNOLOGIA";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "OPERACION_COMERCIAL";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "ESTADO_DE_LA_ORDEN";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "APPOINTMENT_ID";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "FLOWNO";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "ORDERCREATETIME";
-            column.DataType = Type.GetType("System.DateTime");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "WORKCREATETIME";
-            column.DataType = Type.GetType("System.DateTime");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "DATE_ERROR";
-            column.DataType = Type.GetType("System.DateTime");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "FLOWTYPE";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "FLOWTYPEID";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "PROCESSINSTNAME";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "ACTIVITYDEFID";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "ACTIVITYINSTNAME";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "CRMNO";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "CUSTOMNAME";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "PRODUCT";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "OPERATION";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "ACCESSACCOUNT";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "INSTALL_ADDRESS";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "CODIGO_LOCALIDAD";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "ERROR_CODE";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-            column = new DataColumn();
-            column.ColumnName = "ERROR_DESC";
-            column.DataType = Type.GetType("System.String");
-            query.Columns.Add(column);
-
-            for (int i = 0; i < 10; i++)
+            if (entorno == "2")
             {
-                DataRow myNewRow;
-                myNewRow = query.NewRow();
+                using (OracleConnection conn = new OracleConnection(db_som))
+                {
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
 
-                myNewRow["FLOWID"] = "16065051850190100-" + i;
-                myNewRow["TECNOLOGIA"] = "";
-                myNewRow["OPERACION_COMERCIAL"] = "Posventa";
-                myNewRow["ESTADO_DE_LA_ORDEN"] = "Executing";
-                myNewRow["APPOINTMENT_ID"] = "FS202011271424130143";
-                myNewRow["FLOWNO"] = "4531008";
-                myNewRow["ORDERCREATETIME"] = "27/11/2020 14:26";
-                myNewRow["WORKCREATETIME"] = "27/11/2020 14:26";
-                myNewRow["DATE_ERROR"] = "27/11/2020 14:37";
-                myNewRow["FLOWTYPE"] = "OM";
-                myNewRow["FLOWTYPEID"] = "OM";
-                myNewRow["PROCESSINSTNAME"] = "FMC Process-GOMEZ GOMEZ MORALES DEISY GOMEZ MORALES";
-                myNewRow["ACTIVITYDEFID"] = "InvokeIM";
-                myNewRow["ACTIVITYINSTNAME"] = "InvokeIM";
-                myNewRow["CRMNO"] = "20000474329533";
-                myNewRow["CUSTOMNAME"] = "GOMEZ GOMEZ MORALES DEISY GOMEZ MORALES";
-                myNewRow["PRODUCT"] = "Broadband Service+Fixed Line Voice+IPTV+TV";
-                myNewRow["OPERATION"] = "Keep+Keep+Install+Uninstall";
-                myNewRow["ACCESSACCOUNT"] = "IPTV:640000181711+DTH:651340443462+LB:82692349+BB:2582692349";
-                myNewRow["INSTALL_ADDRESS"] = "CL 4 KR 4-54 LA POLA";
-                myNewRow["CODIGO_LOCALIDAD"] = "73001000";
-                myNewRow["ERROR_CODE"] = "INV-SIGRES-00010001";
-                myNewRow["ERROR_DESC"] = "Service CIP_00000000000000000000000004531008 already exists";
-                query.Rows.Add(myNewRow);
+                        cmd.CommandText = consultaSOM;
+                        cmd.Connection = conn;
+                        conn.Open();
+                        OracleDataReader queryOracle = cmd.ExecuteReader();
+
+                        query.Load(queryOracle);
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                query = new DataTable();
+                DataColumn column = new DataColumn();
+                column.ColumnName = "FLOWID";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "TECNOLOGIA";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "OPERACION_COMERCIAL";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "ESTADO_DE_LA_ORDEN";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "APPOINTMENT_ID";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "FLOWNO";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "ORDERCREATETIME";
+                column.DataType = Type.GetType("System.DateTime");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "WORKCREATETIME";
+                column.DataType = Type.GetType("System.DateTime");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "DATE_ERROR";
+                column.DataType = Type.GetType("System.DateTime");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "FLOWTYPE";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "FLOWTYPEID";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "PROCESSINSTNAME";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "ACTIVITYDEFID";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "ACTIVITYINSTNAME";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "CRMNO";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "CUSTOMNAME";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "PRODUCT";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "OPERATION";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "ACCESSACCOUNT";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "INSTALL_ADDRESS";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "CODIGO_LOCALIDAD";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "ERROR_CODE";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+                column = new DataColumn();
+                column.ColumnName = "ERROR_DESC";
+                column.DataType = Type.GetType("System.String");
+                query.Columns.Add(column);
+
+                for (int i = 0; i < 10; i++)
+                {
+                    DataRow myNewRow;
+                    myNewRow = query.NewRow();
+
+                    myNewRow["FLOWID"] = "16065051850190100-" + i;
+                    myNewRow["TECNOLOGIA"] = "";
+                    myNewRow["OPERACION_COMERCIAL"] = "Posventa";
+                    myNewRow["ESTADO_DE_LA_ORDEN"] = "Executing";
+                    myNewRow["APPOINTMENT_ID"] = "FS202011271424130143";
+                    myNewRow["FLOWNO"] = "4531008";
+                    myNewRow["ORDERCREATETIME"] = "27/11/2020 14:26";
+                    myNewRow["WORKCREATETIME"] = "27/11/2020 14:26";
+                    myNewRow["DATE_ERROR"] = "27/11/2020 14:37";
+                    myNewRow["FLOWTYPE"] = "OM";
+                    myNewRow["FLOWTYPEID"] = "OM";
+                    myNewRow["PROCESSINSTNAME"] = "FMC Process-GOMEZ GOMEZ MORALES DEISY GOMEZ MORALES";
+                    myNewRow["ACTIVITYDEFID"] = "InvokeIM";
+                    myNewRow["ACTIVITYINSTNAME"] = "InvokeIM";
+                    myNewRow["CRMNO"] = "20000474329533";
+                    myNewRow["CUSTOMNAME"] = "GOMEZ GOMEZ MORALES DEISY GOMEZ MORALES";
+                    myNewRow["PRODUCT"] = "Broadband Service+Fixed Line Voice+IPTV+TV";
+                    myNewRow["OPERATION"] = "Keep+Keep+Install+Uninstall";
+                    myNewRow["ACCESSACCOUNT"] = "IPTV:640000181711+DTH:651340443462+LB:82692349+BB:2582692349";
+                    myNewRow["INSTALL_ADDRESS"] = "CL 4 KR 4-54 LA POLA";
+                    myNewRow["CODIGO_LOCALIDAD"] = "73001000";
+                    myNewRow["ERROR_CODE"] = "INV-SIGRES-00010001";
+                    myNewRow["ERROR_DESC"] = "Service CIP_00000000000000000000000004531008 already exists";
+                    query.Rows.Add(myNewRow);
+                }
             }
 
             if (query.Rows.Count > 0)

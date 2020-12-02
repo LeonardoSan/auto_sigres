@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\SigresController.cs" />
     <Compile Include="Controllers\SOMController.cs" />
     <Compile Include="DBManually\DataAnnotation\Columna.cs" />
     <Compile Include="DBManually\DataAnnotation\ParametroSP.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\SIGRES.cs" />
     <Compile Include="Modelos\SOM.cs" />
     <Compile Include="Modelos\Parametros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
