@@ -43,7 +43,7 @@ namespace api_consulta_sigres_som.Controllers
             dicParameter = new Dictionary<string, string>();
             dicParameter.Add("@Nombre_Parametro", "SQL_SELECT_SIGRES");
             DataTable tbParametros = parametros.select(dicParameter).Tables[0];
-            string consultaSOM = tbParametros.Rows[0]["Valor_Parametro"].ToString();
+            string consultaSigres = tbParametros.Rows[0]["Valor_Parametro"].ToString();
 
             string db_sigres = EncryptionManager.Decrypt(ConfigurationManager.ConnectionStrings["DB_CONNECTION_SIGRES_" + cadena].ToString());
             DataTable query = new DataTable();
@@ -54,7 +54,7 @@ namespace api_consulta_sigres_som.Controllers
                 {
                     OracleCommand cmd = new OracleCommand();
 
-                    cmd.CommandText = consultaSOM;
+                    cmd.CommandText = consultaSigres;
                     cmd.Connection = conn;
                     cmd.Parameters.Add("CAI", CAI);
                     conn.Open();
