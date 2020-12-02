@@ -80,7 +80,6 @@ namespace automatizacion_sigres
         {
             //Aquí va tu logica
 
-
             ProgramarProximaEjecucion();//Volver a programar proxima ejecución
         }
     }

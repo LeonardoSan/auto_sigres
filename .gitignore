@@ -65,6 +65,9 @@ Thumbs.db
 /WebServices/bin/Debug/
 /WebServices/obj/Debug/
 /externo/Front-End/Scripts/
+/api_consulta_sigres_som/obj/
+/automatizacion_sigres/obj/
+
 
 
 # End of https://www.gitignore.io/api/angular,dotnetcore,aspnetcore

@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1267
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "automatizacion_sigres", "automatizacion_sigres\automatizacion_sigres.csproj", "{7F5EF2C7-3D91-4311-9C13-4E126554E3C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_consulta_sigres_som", "api_consulta_sigres_som\api_consulta_sigres_som.csproj", "{F04FCCC3-77E5-43C4-AF9A-559067B736C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigresSom_Console", "SigresSom_Console\SigresSom_Console.csproj", "{6864788A-5C7B-474D-9A2F-E0AC37637086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F04FCCC3-77E5-43C4-AF9A-559067B736C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F04FCCC3-77E5-43C4-AF9A-559067B736C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F04FCCC3-77E5-43C4-AF9A-559067B736C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6864788A-5C7B-474D-9A2F-E0AC37637086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6864788A-5C7B-474D-9A2F-E0AC37637086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6864788A-5C7B-474D-9A2F-E0AC37637086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6864788A-5C7B-474D-9A2F-E0AC37637086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
