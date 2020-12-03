@@ -1,6 +1,7 @@
 ﻿using DBManager.DBManually.DataAnnotation;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Dynamic;
@@ -67,7 +68,7 @@ namespace DBManager.DBManually
             else if (entorno == "2")
                 cadena = "DB_CONNECTION_PROD";
 
-            cadena = EncryptionManager.Decrypt(System.Configuration.ConfigurationManager.AppSettings[cadena].ToString());
+            cadena = EncryptionManager.Decrypt(ConfigurationManager.ConnectionStrings[cadena].ToString());
 
             return cadena;
         }
@@ -231,7 +232,7 @@ namespace DBManager.DBManually
             PropertyInfo[] propiedades = null;
             propiedades = clase.GetProperties();
             string query = querySelect;
-              
+
             if (query == "NO WHERE")
             {
                 //sqlSelect += " " + where;
@@ -239,14 +240,15 @@ namespace DBManager.DBManually
             }
 
             if (top == "0" || top == "*" || top.Trim() == "" || top == null)
-            { 
+            {
                 top = " ";
-            } else
+            }
+            else
             {
                 top = "TOP " + top;
             }
 
-            string sqlSelect = String.Format("SELECT {2} * FROM {0} {1}", clase.Name, query, top); 
+            string sqlSelect = String.Format("SELECT {2} * FROM {0} {1}", clase.Name, query, top);
 
             SqlCommand command = new SqlCommand(sqlSelect, startConnection());
             if (param != null)
@@ -267,7 +269,7 @@ namespace DBManager.DBManually
 
         public DataSet selectQuery(string sqlSelect, Dictionary<string, string> param)
         {
-            DataSet tbl = new DataSet(); 
+            DataSet tbl = new DataSet();
             SqlCommand command = new SqlCommand(sqlSelect, startConnection());
             if (param != null)
             {

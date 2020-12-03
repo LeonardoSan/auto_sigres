@@ -57,7 +57,9 @@ namespace DBManager
         [Columna(nombreColumna = "CREATED", esPrimaryKey = false)]
         public DateTime CREATED { get; set; }
         [Columna(nombreColumna = "STATUS_FLOW", esPrimaryKey = false)]
-        public string STATUS_FLOW { get; set; }
+        public Int32 STATUS_FLOW { get; set; }
+        [Columna(nombreColumna = "STATUS_CAI", esPrimaryKey = false)]
+        public string STATUS_CAI { get; set; }
 
     }
 }

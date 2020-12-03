@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Log.cs" />
     <Compile Include="Class\MainConsole.cs" />
     <Compile Include="DBManually\DataAnnotation\Columna.cs" />
     <Compile Include="DBManually\DataAnnotation\ParametroSP.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="DBManually\DBManuallyModels\SPprueba.cs" />
     <Compile Include="DBManually\EncryptionHelper.cs" />
     <Compile Include="DBManually\EncryptionManager.cs" />
+    <Compile Include="Modelos\Log.cs" />
     <Compile Include="Modelos\Parametros.cs" />
     <Compile Include="Modelos\SOM.cs" />
     <Compile Include="Program.cs" />
