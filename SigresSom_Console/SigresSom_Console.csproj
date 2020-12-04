@@ -57,6 +57,7 @@
     <Compile Include="DBManually\EncryptionManager.cs" />
     <Compile Include="Modelos\Log.cs" />
     <Compile Include="Modelos\Parametros.cs" />
+    <Compile Include="Modelos\SIGRES.cs" />
     <Compile Include="Modelos\SOM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
